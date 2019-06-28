@@ -1,0 +1,20 @@
+<header>
+    <div class="container">
+        <h1 class="logo">Project Manager</h1>
+    </div>
+    <div class="navigation">
+        <nav mat-tab-nav-bar>
+            <a mat-tab-link *ngFor="let link of links"
+                [routerLink]="link.link"
+                routerLinkActive #rla="routerLinkActive"
+                [active]="rla.isActive">
+                {{link.label}}
+            </a>
+        </nav>
+    </div>
+    
+          
+</header>
+<section>
+    <router-outlet></router-outlet>
+</section>
