@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+}
+    
+.container > * {
+    width: 60%;
+}
+
+#userFont {
+    font-weight: bold;
+}
+.row-label-user {
+    text-align: left;
+}

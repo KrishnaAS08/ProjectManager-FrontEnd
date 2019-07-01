@@ -1,9 +1,9 @@
 <header>
-    <div class="container">
+    <div class="header">
         <h1 class="logo">Project Manager</h1>
     </div>
     <div class="navigation">
-        <nav mat-tab-nav-bar>
+        <nav mat-tab-nav-bar >
             <a mat-tab-link *ngFor="let link of links"
                 [routerLink]="link.link"
                 routerLinkActive #rla="routerLinkActive"

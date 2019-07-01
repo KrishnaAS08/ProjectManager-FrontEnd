@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+}
+    
+.container > * {
+    width: 45%;
+}
+
+.viewContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    min-width: 450px;
+}
+
+.viewContainer > * {
+    width: 70%;
+}
+
+.form {
+    display: flex;
+    height: 70px;
+}
+
+.mat-form-field {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    flex-grow: 1;
+}
+
+#label {
+    text-transform: uppercase;
+}
+
+#btn_save {
+    font-family: 'Montserrat';
+}

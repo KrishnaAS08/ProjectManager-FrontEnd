@@ -1,9 +1,26 @@
-.navigation {
-    width: 80%;
+.header {
+    width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 30% auto;
+    position: fixed;
+    overflow: hidden;
+    background-color:rgb(255, 255, 255) !important;
+    z-index: 99;
 }
+
+.navigation {
+    top: 90px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 30% auto;
+    position: fixed;
+    background-color: rgb(10, 10, 10);
+    
+}
+
 .navigation>nav {
     justify-self: left;
     
@@ -12,4 +29,15 @@ a {
     padding: 1em;
     text-transform: uppercase;
     font-size: .8em;
+    font-family: 'Montserrat';
+    color: aliceblue;
+}
+a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.logo {
+    background-color:rgb(255, 255, 255) !important;
+    opacity: 1;
 }

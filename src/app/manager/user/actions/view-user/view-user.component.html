@@ -1,1 +1,21 @@
-<p>view-user works!</p>
+<div *ngIf="user">
+    <div>
+        <br />
+        <div>
+            <label id="userFont">First Name: </label>{{user.firstName}}
+        </div>
+        <br />
+        <div>
+            <label id="userFont">Last Name: </label>{{user.lastName}}
+        </div>
+        <br />
+        <div>
+            <label id="userFont">Employee ID: </label>{{user.empId}}
+        </div>
+    </div>
+    <div>
+        <button mat-button>Edit</button>
+        <button mat-button>Delete</button>
+    </div>
+</div>
+<mat-divider></mat-divider>
