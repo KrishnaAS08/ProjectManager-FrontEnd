@@ -18,7 +18,7 @@
     grid-template-columns: 30% auto;
     position: fixed;
     background-color: rgb(10, 10, 10);
-    
+    z-index: 99;
 }
 
 .navigation>nav {
@@ -39,5 +39,4 @@ a:hover {
 
 .logo {
     background-color:rgb(255, 255, 255) !important;
-    opacity: 1;
 }

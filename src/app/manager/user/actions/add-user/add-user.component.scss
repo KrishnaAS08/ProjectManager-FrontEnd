@@ -5,7 +5,7 @@
 }
     
 .container > * {
-    width: 45%;
+    width: 70%;
 }
 
 .viewContainer {
@@ -35,5 +35,57 @@
 }
 
 #btn_save {
+    background: #ddd;
+    color: black;
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_save:hover {
+    background: rgb(10, 10, 10);
+    color: white;
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_save:disabled {
+    background: #ddd;
+    color: black;
+    border: none;
+    height: 30px  !important;
+    cursor: not-allowed;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_reset {
+    background: rgb(247, 141, 102);
+    color: white;
+    height: 30px  !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_reset:hover {
+    background: orangered;
+    color: white;
+    height: 30px  !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
     font-family: 'Montserrat';
 }

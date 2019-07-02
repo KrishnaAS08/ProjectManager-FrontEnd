@@ -56,6 +56,7 @@ export class AddUserComponent implements OnInit {
     this.userForm.reset();
     this.userForm.markAsPristine();
     this.userForm.markAsUntouched();
+    this.getUserList();
   }
 
 }

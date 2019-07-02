@@ -1,0 +1,33 @@
+<div class="container">
+    <h3 mat-dialog-title>Select Manager</h3>
+
+        <div class="form">
+            <mat-form-field id="label" fxFlex="40%">
+                <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+      
+        <mat-table #table [dataSource]="dataSource" class="mat-cell">
+    
+            <ng-container matColumnDef="userId">
+              <mat-header-cell *matHeaderCellDef >S.No</mat-header-cell>
+              <mat-cell *matCellDef="let row; let i=index"> {{i+1}}</mat-cell>
+            </ng-container>
+        
+        
+            <ng-container matColumnDef="userName">
+              <mat-header-cell *matHeaderCellDef >User Name</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.userName}}</mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="onRowClicked(row)"></mat-row>
+        </mat-table>
+
+    
+        <div mat-dialog-actions>
+          <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+        </div>
+    
+</div>    

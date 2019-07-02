@@ -29,15 +29,13 @@
                 </mat-error>
             </mat-form-field>
         </div>
-
-        <button mat-button id="btn_save" [disabled]="!userForm.valid" (click)="onSubmit()">Save</button>
-        <button mat-button id="btn_save" (click)="onReset()">Reset</button>
+        <br />
+        <button mat-button id="btn_save" [disabled]="!userForm.valid" (click)="onSubmit()">Add</button>&nbsp;&nbsp;&nbsp;
+        <button mat-button id="btn_reset" (click)="onReset()">Reset</button>
     </form>
 </div>
-
+<br />
 <mat-divider></mat-divider>
 <div class="viewContainer">
-    <div *ngFor="let u of users">
-            <view-user [user]="u"></view-user>
-    </div>
+    <view-user [users]="users"></view-user>
 </div>

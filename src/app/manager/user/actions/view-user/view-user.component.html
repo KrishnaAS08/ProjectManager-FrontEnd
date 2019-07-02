@@ -1,21 +1,26 @@
-<div *ngIf="user">
-    <div>
-        <br />
+<div *ngFor="let user of users">
+    <div *ngIf="user">
         <div>
-            <label id="userFont">First Name: </label>{{user.firstName}}
+            <br />
+            <div>
+                <label id="userFont">First Name: </label>{{user.firstName}}
+            </div>
+            <br />
+            <div>
+                <label id="userFont">Last Name: </label>{{user.lastName}}
+            </div>
+            <br />
+            <div>
+                <label id="userFont">Employee ID: </label>{{user.empId}}
+            </div>
         </div>
         <br />
         <div>
-            <label id="userFont">Last Name: </label>{{user.lastName}}
+            <button mat-button id="btn_edit">Edit</button>&nbsp;&nbsp;&nbsp;
+            <button mat-button id="btn_delete" (click)="onDelete(user.userId,user.firstName,user.lastName,user.empId)">
+                Delete</button>
         </div>
-        <br />
-        <div>
-            <label id="userFont">Employee ID: </label>{{user.empId}}
-        </div>
-    </div>
-    <div>
-        <button mat-button>Edit</button>
-        <button mat-button>Delete</button>
-    </div>
+    </div>    
+    <br />
 </div>
 <mat-divider></mat-divider>

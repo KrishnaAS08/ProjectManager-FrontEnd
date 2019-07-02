@@ -1,1 +1,22 @@
-<p>delete-user works!</p>
+<div>
+    <h3 class="dialog" mat-dialog-title>Are you sure?</h3>
+    <div mat-dialog-content>
+        <b>User ID: </b> 
+        <i>{{user.userId}}</i>
+        <p></p>
+        <b>First Name: </b>
+        <i>{{user.firstName}}</i>
+        <p></p>
+        <b>Last Name: </b>
+        <i>{{user.lastName}}</i>
+        <p></p>
+        <b>Employee ID : </b>
+        <i>{{user.empId}}</i>
+        <p></p>
+    </div>
+      
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="1" (click)="confirmDeleteUser()">End Task</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+</div>

@@ -48,27 +48,27 @@ export class ProjectService {
   }
 
   updateUser(id: number, user: User): Observable<any> {
-    return this.http.put(`${this.baseUrl}` + `/users` + `/updateUser` + `${id}`, user);
+    return this.http.put(`${this.baseUrl}` + `/users` + `/updateUser` + `/${id}`, user);
   }
 
   updateProject(id: number, project: Project): Observable<any> {
-    return this.http.put(`${this.baseUrl}` + `/projects` + `/updateProject` + `${id}`, project);
+    return this.http.put(`${this.baseUrl}` + `/projects` + `/updateProject` + `/${id}`, project);
   }
 
   updateTask(id: number, task: Task): Observable<any> {
-    return this.http.put(`${this.baseUrl}` + `/tasks` + `/updateTask` + `${id}`, task);
+    return this.http.put(`${this.baseUrl}` + `/tasks` + `/updateTask` + `/${id}`, task);
   }
 
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}` + `/users` + `/deleteUser` + `${id}`);
+    return this.http.delete(`${this.baseUrl}` + `/users` + `/deleteUser` + `/${id}`);
   }
 
   suspendProject(id: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}` + `/projects` + `/suspendProject` + `${id}`, null);
+    return this.http.put(`${this.baseUrl}` + `/projects` + `/suspendProject` + `/${id}`, null);
   }
 
   endTask(id: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}` + `/tasks` + `/endTask` + `${id}`, null);
+    return this.http.put(`${this.baseUrl}` + `/tasks` + `/endTask` + `/${id}`, null);
   }
 
   getAllProjectsRecord(): Observable<any> {
@@ -76,6 +76,6 @@ export class ProjectService {
   }
 
   searchTaskById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}` + `/tasks` + `/searchTaskById` +`${id}`);
+    return this.http.get(`${this.baseUrl}` + `/tasks` + `/searchTaskById` +`/${id}`);
   }
 }

@@ -1,11 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import '~material-design-icons/iconfont/material-icons.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/theming';
 @import url(https://fonts.googleapis.com/css?family=Rancho&effect=fire-animation);
-
- 
-
 
 @include mat-core();
 
@@ -59,5 +57,4 @@ section {
     padding: 2em;
     padding-top: 170px;
     z-index: 1;
-
 }

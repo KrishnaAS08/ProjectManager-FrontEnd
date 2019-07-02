@@ -14,3 +14,48 @@
 .row-label-user {
     text-align: left;
 }
+
+#btn_edit {
+    background: #ddd;
+    color: black;
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_edit:hover {
+    background: rgb(10, 10, 10);
+    color: white;
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_delete {
+    background: rgb(235, 95, 95);
+    border: none;
+    color: white;
+    height: 30px  !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_delete:hover {
+    background: rgb(255, 0, 0);
+    color: white;
+    height: 30px  !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
