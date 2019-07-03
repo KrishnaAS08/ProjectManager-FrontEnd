@@ -1,0 +1,62 @@
+.tasktable {
+    width: 100%;
+}
+.tasktable,th {
+    width: 500px !important;
+}
+.tasktable,td {
+    height :100px !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+}
+    
+.container > * {
+    width: 50%;
+}
+
+#search {
+    width: 500px;
+}
+  
+.form {
+    display: flex;
+    height: 70px;
+}
+
+.mat-form-field {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    flex-grow: 1;
+}
+
+#label {
+    text-transform: uppercase;
+}
+
+.tasktable {
+    width: 100%;
+}
+.tasktable,th {
+    width: 500px !important;
+}
+.tasktable,td {
+    height :100px !important;
+}
+
+#tasks {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: lavender;
+    border-bottom-width: 0px;
+}
+.card {
+    background-color: darkgray;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    max-width: 100px ;
+    font-family: "Montserrat"
+}

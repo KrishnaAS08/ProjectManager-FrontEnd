@@ -4,14 +4,17 @@
             <div> 
                 <label id="projectFont">Project: </label>{{project.projectName}}
             </div>
+            <br />
             <div class="alignDate">
                 <label id="projectFont">No of Tasks: </label>{{project.noOfTasks}}
                 <label id="projectFont">Completed: </label>{{project.completedTasks}}
             </div>
+            <br />
             <div class="alignDate">
                 <label id="projectFont">Start Date: </label>{{project.startDate === null ? "Not available" : project.startDate | date: 'dd-MM-yyyy'}}
                 <label id="projectFont">End Date: </label>{{project.endDate === null ? "Not available" : project.endDate | date: 'dd-MM-yyyy'}}
             </div>
+            <br />
             <div>
                 <label id="projectFont">Priority: </label>{{project.priority}}
             </div>

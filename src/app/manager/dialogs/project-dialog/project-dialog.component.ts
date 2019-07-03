@@ -1,26 +1,26 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatDialogRef, MAT_DIALOG_DATA, MatSort } from '@angular/material';
-import { User } from 'src/app/models/user';
+import { Project } from 'src/app/models/project';
+import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource, MatSort } from '@angular/material';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
-  selector: 'app-user-dialog',
-  templateUrl: './user-dialog.component.html',
-  styleUrls: ['./user-dialog.component.scss']
+  selector: 'app-project-dialog',
+  templateUrl: './project-dialog.component.html',
+  styleUrls: ['./project-dialog.component.scss']
 })
-export class UserDialogComponent implements OnInit {
+export class ProjectDialogComponent implements OnInit {
 
-  displayedColumns = ['userId','userName'];
-  dataSource = new MatTableDataSource<User>();
+  displayedColumns = ['projectId','projectName'];
+  dataSource = new MatTableDataSource<Project>();
 
-  constructor(public dialogRef: MatDialogRef<UserDialogComponent>,
-    @Inject (MAT_DIALOG_DATA) public user: User,
+  constructor(public dialogRef: MatDialogRef<ProjectDialogComponent>,
+    @Inject (MAT_DIALOG_DATA) public project: Project,
     public projectService: ProjectService) { }
 
   @ViewChild(MatSort, {static: true}) sort: MatSort; 
 
   ngOnInit() {
-    this.getUserList();
+    this.getProjectList();
     this.dataSource.sort = this.sort;
   }
 
@@ -40,11 +40,11 @@ export class UserDialogComponent implements OnInit {
     }
   }
 
-  getUserList() {
-    this.projectService.getUserList()
+  getProjectList() {
+    this.projectService.getProjectList()
       .subscribe(
         data=>{
-          this.dataSource = new MatTableDataSource<User>(data);
+          this.dataSource = new MatTableDataSource<Project>(data);
           this.dataSource.sort = this.sort;
         }
       )

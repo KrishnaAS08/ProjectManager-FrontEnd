@@ -20,6 +20,8 @@ import { ViewTaskComponent } from './manager/tasks/actions/view-task/view-task.c
 import { EditTaskComponent } from './manager/tasks/actions/edit-task/edit-task.component';
 import { DeleteTaskComponent } from './manager/tasks/actions/delete-task/delete-task.component';
 import { UserDialogComponent } from './manager/dialogs/user-dialog/user-dialog.component';
+import { ProjectDialogComponent } from './manager/dialogs/project-dialog/project-dialog.component';
+import { ParentDialogComponent } from './manager/dialogs/parent-dialog/parent-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { UserDialogComponent } from './manager/dialogs/user-dialog/user-dialog.c
     ViewTaskComponent,
     EditTaskComponent,
     DeleteTaskComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    ProjectDialogComponent,
+    ParentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { UserDialogComponent } from './manager/dialogs/user-dialog/user-dialog.c
   entryComponents: [
     DeleteUserComponent,
     UserDialogComponent,
-    DeleteProjectComponent
+    DeleteProjectComponent,
+    ProjectDialogComponent,
+    ParentDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
