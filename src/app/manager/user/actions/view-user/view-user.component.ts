@@ -23,7 +23,7 @@ export class ViewUserComponent implements OnInit {
       .subscribe(
         data => {
           this.users = data;
-          console.log('UserList>>>',this.users);
+          console.log('ProjectList>>>',this.users);
         }
       );
   }

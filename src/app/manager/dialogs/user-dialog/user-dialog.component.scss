@@ -30,3 +30,25 @@
     background-color: rgb(211, 202, 202);
     cursor: pointer;
 }
+
+#btn_cancel {
+    background: rgb(247, 141, 102);
+    color: white;
+    height: 30px  !important;
+    margin-left: 150px;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_cancel:hover {
+    background: orangered;
+    color: white;
+    height: 30px  !important;
+    position: center;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
