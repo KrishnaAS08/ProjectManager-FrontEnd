@@ -35,7 +35,7 @@ export class AddProjectComponent implements OnInit {
       'userName': '',
       'ifSetDate': false
     });
-
+    this.getProjectList();
   }
 
   onClick() {
@@ -53,6 +53,16 @@ export class AddProjectComponent implements OnInit {
       }
     );
     return dialogRef.afterClosed();
+  }
+
+  getProjectList() {
+    this.projectService.getAllProjectsRecord()
+      .subscribe(
+        data=>{
+          this.projects = data;
+          console.log('ProjectList>>>',this.projects);
+        }
+      )
   }
 
   onSubmit() {

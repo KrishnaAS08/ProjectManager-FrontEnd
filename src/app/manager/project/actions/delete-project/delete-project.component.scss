@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .container > * {
+    width: 120%;
+  }
+.dialog {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 25px;
+  color: darkblue;
+}
+button {
+  font-family: 'Montserrat'
+}

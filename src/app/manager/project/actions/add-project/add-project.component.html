@@ -9,12 +9,10 @@
                     </mat-error>
                 </mat-form-field>
             </div>
-            <br />
-
             <mat-checkbox formControlName="ifSetDate" (click)="onClick()">
                     Set Start and End Date
             </mat-checkbox>
-            <br /><br />
+            <br />
             <div class="form">
                 <mat-form-field floatLabel="auto" hideRequiredMarker appearance="fill">
                     <mat-label id="label">Start Date</mat-label>
@@ -32,7 +30,6 @@
                     <mat-datepicker #picker2></mat-datepicker>
                 </mat-form-field>
             </div>
-            <br />
 
             <div class="form"> 
                 <mat-label id="label">Priority</mat-label>
@@ -58,8 +55,13 @@
                     </i>
                 </button>
             </div>
-            <br />
+
             <button mat-button id="btn_save" [disabled]="!projectForm.valid" (click)="onSubmit()">Add</button>&nbsp;&nbsp;&nbsp;
             <button mat-button id="btn_reset" (click)="onReset()">Reset</button>
         </form>
-    </div>
+</div>
+<br />
+<mat-divider></mat-divider>
+<div class="viewContainer">
+    <view-project [projects]="projects"></view-project>
+</div>

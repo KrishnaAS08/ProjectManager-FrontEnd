@@ -1,1 +1,34 @@
-<p>delete-project works!</p>
+<div>
+    <h3 class="dialog" mat-dialog-title>Are you sure?</h3>
+    <div mat-dialog-content>
+        <b>Project ID: </b> 
+        <i>{{project.projectId}}</i>
+        <p></p>
+        <b>Project: </b>
+        <i>{{project.projectName}}</i>
+        <p></p>
+        <b>Username: </b>
+        <i>{{project.userName}}</i>
+        <p></p>
+        <b>No of Tasks : </b>
+        <i>{{project.noOfTasks}}</i>
+        <p></p>
+        <b>Completed : </b>
+        <i>{{project.completedTasks}}</i>
+        <p></p>
+        <b>Priority : </b>
+        <i>{{project.priority}}</i>
+        <p></p>
+        <b>Start Date : </b>
+        <i>{{project.startDate === null ? "Not available" : project.startDate | date: 'dd-MM-yyyy'}}</i>
+        <p></p>
+        <b>End Date : </b>
+        <i>{{project.endDate === null ? "Not available" : project.endDate | date: 'dd-MM-yyyy'}}</i>
+        <p></p>
+    </div>
+          
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="1" (click)="confirmSuspend()">OK</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+</div>

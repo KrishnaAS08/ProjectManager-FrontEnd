@@ -1,1 +1,30 @@
-<p>view-project works!</p>
+<div *ngFor="let project of projects">
+    <div *ngIf="project">
+        <div class="flex-container">
+            <div> 
+                <label id="projectFont">Project: </label>{{project.projectName}}
+            </div>
+            <div class="alignDate">
+                <label id="projectFont">No of Tasks: </label>{{project.noOfTasks}}
+                <label id="projectFont">Completed: </label>{{project.completedTasks}}
+            </div>
+            <div class="alignDate">
+                <label id="projectFont">Start Date: </label>{{project.startDate === null ? "Not available" : project.startDate | date: 'dd-MM-yyyy'}}
+                <label id="projectFont">End Date: </label>{{project.endDate === null ? "Not available" : project.endDate | date: 'dd-MM-yyyy'}}
+            </div>
+            <div>
+                <label id="projectFont">Priority: </label>{{project.priority}}
+            </div>
+            <div>
+                <button mat-button id="btn_edit">Update</button>&nbsp;&nbsp;&nbsp;
+                <button mat-button id="btn_delete" (click)="onSuspend(project.projectId, project.projectName,
+                        project.userName, project.priority, project.startDate, project.endDate,
+                        project.noOfTasks, project.completedTasks)">Suspend
+                </button>
+            </div>
+        </div>
+        
+    </div>    
+    <br />
+    <mat-divider></mat-divider>
+</div>

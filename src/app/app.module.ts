@@ -49,7 +49,8 @@ import { UserDialogComponent } from './manager/dialogs/user-dialog/user-dialog.c
   ],
   entryComponents: [
     DeleteUserComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    DeleteProjectComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
