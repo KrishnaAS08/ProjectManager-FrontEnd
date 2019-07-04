@@ -1,15 +1,18 @@
-<div class="container">
-    <div class="form">
-        <mat-form-field floatLabel="auto" appearance="fill">
-            <mat-label id="label">Project</mat-label>
-            <input [value]="projectName === undefined ? '': projectName" matInput readonly>
-        </mat-form-field>
-        <button type="button" mat-icon-button color="primary" (click)="getProjectList()">
-            <i class="material-icons">
-                search
-            </i>
-        </button>
-    </div>
+<div class="form">
+    <mat-form-field floatLabel="auto" appearance="fill">
+      <mat-label id="label">Project</mat-label>
+      <input [value]="projectName === undefined ? '': projectName" matInput readonly>
+    </mat-form-field>
+    <button type="button" mat-icon-button color="primary" (click)="getProjectList()">
+      <i class="material-icons">
+          search
+      </i>
+    </button>
+      Sort: &nbsp;&nbsp;&nbsp;
+      <button mat-button id="btn_select">Start Date</button>&nbsp;&nbsp;&nbsp;
+      <button mat-button id="btn_select">End Date</button>&nbsp;&nbsp;&nbsp;
+      <button mat-button id="btn_select">Priority</button>&nbsp;&nbsp;&nbsp;
+      <button mat-button id="btn_select">Completed</button>
 </div>
 <mat-divider></mat-divider>
 <div *ngIf="isSearch">
@@ -41,16 +44,16 @@
                 <td>{{task.startDate | date: 'dd/MM/yyyy'}}</td>
                 <td>{{task.endDate | date: 'dd/MM/yyyy'}}</td>
                 <td>
-                  <button *ngIf="task.status != 'complete'" mat-icon-button color="accent" [disabled]="task.status === 'complete'">
+                  <button *ngIf="task.status != 'complete'" id="btn_edit" mat-icon-button color="accent" [disabled]="task.status === 'complete'">
                     <a [routerLink]="['edit',task.taskId]">
-                      <mat-icon aria-label="Edit">edit</mat-icon></a>
+                      Edit</a>
                   </button>
-                  <button *ngIf="task.status === 'complete'" mat-icon-button color="accent" [disabled]="task.status === 'complete'">
-                        <mat-icon aria-label="Edit">edit</mat-icon>
-                    </button>
-                  <button mat-icon-button color="accent" (click)="endTask(task.taskId, task.taskName, task.projectName,
+                  <button *ngIf="task.status === 'complete'" id="btn_edit" mat-icon-button color="accent" [disabled]="task.status === 'complete'">
+                        Edit
+                    </button>&nbsp;&nbsp;&nbsp;
+                  <button mat-icon-button color="accent" id="btn_delete" (click)="endTask(task.taskId, task.taskName, task.projectName,
                   task.parentName, task.priority, task.startDate, task.endDate, task.userName)" [disabled]="task.status === 'complete'">
-                    <mat-icon aria-label="End">close</mat-icon>
+                    End
                   </button>
                 </td>
                 

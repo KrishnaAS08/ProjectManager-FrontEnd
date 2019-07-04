@@ -6,6 +6,11 @@
 .flex-container > div {
     width: 90%;
 }
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
 
 .alignDate {
     display: flex;
@@ -13,6 +18,10 @@
     justify-content: space-between;
 }
 
+#label {
+    font-family: 'Montserrat';
+    font-size: 18px;
+}
 
 #projectFont {
     font-weight: bold;

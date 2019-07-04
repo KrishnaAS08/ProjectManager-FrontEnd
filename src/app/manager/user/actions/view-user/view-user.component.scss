@@ -6,8 +6,18 @@
     
 .container > * {
     width: 60%;
+
 }
 
+#label {
+    font-family: 'Montserrat';
+    font-size: 18px;
+}
+
+.form {
+    display: flex;
+    height: 60px;
+}
 #userFont {
     font-weight: bold;
 }

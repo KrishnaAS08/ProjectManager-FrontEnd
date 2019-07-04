@@ -1,3 +1,18 @@
+
+<div class="form">
+    <mat-form-field floatLabel="auto" id="label">
+        <input matInput type="text" placeholder="Search..." autocomplete="off">
+    </mat-form-field>
+</div>
+<div>
+    Sort: &nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit">Start Date</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit">End Date</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit">Priority</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit">Completed</button>
+</div>
+<br />
+<mat-divider></mat-divider>
 <div *ngFor="let project of projects">
     <div *ngIf="project">
         <div class="flex-container">

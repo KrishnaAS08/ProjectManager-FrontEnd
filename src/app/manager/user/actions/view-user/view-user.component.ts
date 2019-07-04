@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSort } from '@angular/material';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/services/project.service';
@@ -12,6 +12,8 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ViewUserComponent implements OnInit {
 
+  count = 0;
+  sortedData: User[];
   @Input() users:Observable<User[]>;
   constructor(public dialog: MatDialog, public projectService: ProjectService) { }
 
@@ -23,7 +25,7 @@ export class ViewUserComponent implements OnInit {
       .subscribe(
         data => {
           this.users = data;
-          console.log('ProjectList>>>',this.users);
+          console.log('UserList>>>',this.users);
         }
       );
   }
@@ -39,4 +41,28 @@ export class ViewUserComponent implements OnInit {
     })
   }
 
+  doSortFirstName() {
+    this.users.subscribe(
+      (data:User[])=>{
+        data.sort((a, b) => a.firstName.localeCompare(b.firstName));
+      }
+    )
+    
+    
+  }
+
+  sortData(data: User[],name): User[] {
+    return data.sort((a, b) => {
+      const isAsc = 'asc';
+      switch (name) {
+        case 'firstName': return compare(a.firstName, b.firstName, isAsc);
+        case 'lastName': return compare(a.lastName, b.lastName, isAsc);
+        case 'empId': return compare(+a.empId, +b.empId, isAsc);
+        default: return 0;
+      }
+    });
+  }
+}
+function compare(a, b, isAsc) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

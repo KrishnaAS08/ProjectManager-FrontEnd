@@ -22,10 +22,6 @@
     width: 500px;
 }
   
-.form {
-    display: flex;
-    height: 70px;
-}
 
 .mat-form-field {
     font-size: 16px;
@@ -64,4 +60,73 @@
 #searchResult {
     color: red;
     
+}
+
+#btn_edit {
+    background:#ddd;
+    color: rgb(3, 3, 3);
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_edit:hover {
+    background: white;
+    color: rgb(3, 3, 3);
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_delete {
+    background: rgb(235, 95, 95);
+    border: none;
+    color: white;
+    height: 30px  !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_delete:hover {
+    background: rgb(255, 0, 0);
+    color: white;
+    height: 30px  !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_select {
+    background: #ddd;
+    color: black;
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_select:hover {
+    background: rgb(10, 10, 10);
+    color: white;
+    border: none;
+    height: 30px  !important;
+    cursor: pointer;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
 }
