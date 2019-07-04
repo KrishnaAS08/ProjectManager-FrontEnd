@@ -1,1 +1,84 @@
-<p>edit-task works!</p>
+<div class="container">
+    <form [formGroup]="taskForm">
+        <div class="form">
+            <mat-form-field floatLabel="auto" appearance="fill">
+                <mat-label id="label">Project</mat-label>
+                <input formControlName="projectName" matInput [value]="task.projectName"
+                    readonly autocomplete="off">
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field floatLabel="auto" hideRequiredMarker appearance="fill">
+                <mat-label id="label">Task</mat-label>
+                <input formControlName="taskName" [value]="task.taskName" matInput autocomplete="off" >
+                <mat-error *ngIf="!taskForm.get('taskName').valid && taskForm.get('taskName').touched">
+                    Required field
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <br />
+        <div class="form"> 
+            <mat-label id="label">Priority</mat-label>
+            <mat-slider
+                class="slider-margin"
+                [max]="max"
+                [min]="min"
+                [step]="step"
+                [thumbLabel]="thumbLabel"
+                formControlName="priority"
+                [value]="task.priority"
+                [vertical]="vertical">
+            </mat-slider>
+        </div>
+
+        <div class="form">
+            <mat-form-field floatLabel="auto" appearance="fill">
+                <mat-label id="label">Parent Task</mat-label>
+                <input formControlName="parentName" matInput [value]="task.parentName === undefined ? '' : task.parentName"
+                    readonly autocomplete="off">
+            </mat-form-field>
+            <button type="button" mat-icon-button color="primary" (click)="getParentList()">
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+        </div>
+
+        
+        <div class="form">
+            <mat-form-field floatLabel="auto" hideRequiredMarker appearance="fill">
+                <mat-label id="label">Start Date</mat-label>
+                <input formControlName="startDate" matInput [value]="task.endDate" [matDatepicker]="picker1"
+                    autocomplete="off" readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 ></mat-datepicker>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field floatLabel="auto" hideRequiredMarker appearance="fill">
+                <mat-label id="label">End Date</mat-label>
+                <input formControlName="endDate" [min]="taskForm.value.startDate" 
+                  matInput [matDatepicker]="picker2" autocomplete="off" readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        
+
+        <div class="form">
+            <mat-form-field floatLabel="auto" appearance="fill">
+                <mat-label id="label">User</mat-label>
+                <input formControlName="userName" matInput [value]="task.userName === undefined ? '': task.userName"
+                    readonly autocomplete="off">
+            </mat-form-field>
+            <button type="button" mat-icon-button color="primary" (click)="getUserList()">
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+        </div>
+        <button routerLink="/viewTask" mat-button id="btn_save" [disabled]="!taskForm.valid" (click)="onSubmit()">Update</button>&nbsp;&nbsp;&nbsp;
+        <button mat-button id="btn_reset" routerLink="/viewTask">Cancel</button>
+    </form>
+</div>

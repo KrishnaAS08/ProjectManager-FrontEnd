@@ -5,6 +5,7 @@ import { AddUserComponent } from './manager/user/actions/add-user/add-user.compo
 import { AddProjectComponent } from './manager/project/actions/add-project/add-project.component';
 import { AddTaskComponent } from './manager/tasks/actions/add-task/add-task.component';
 import { ViewTaskComponent } from './manager/tasks/actions/view-task/view-task.component';
+import { EditTaskComponent } from './manager/tasks/actions/edit-task/edit-task.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'viewTask',
     component: ViewTaskComponent
+  },
+  {
+    path: 'viewTask/edit/:id',
+    component: EditTaskComponent
   },
   {
     path: '**',

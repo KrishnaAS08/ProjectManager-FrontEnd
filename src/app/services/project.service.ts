@@ -68,7 +68,7 @@ export class ProjectService {
   }
 
   endTask(id: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}` + `/tasks` + `/endTask` + `/${id}`, null);
+    return this.http.delete(`${this.baseUrl}` + `/tasks` + `/endTask` + `/${id}`);
   }
 
   getAllProjectsRecord(): Observable<any> {
@@ -76,6 +76,10 @@ export class ProjectService {
   }
 
   searchTaskById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}` + `/tasks` + `/searchTaskById` +`/${id}`);
+    return this.http.get(`${this.baseUrl}` + `/tasks` + `/searchTaskById` + `/${id}`);
+  }
+
+  getTaskById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + `/tasks` + `/getTaskById` + `/${id}`);
   }
 }

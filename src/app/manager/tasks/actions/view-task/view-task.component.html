@@ -9,12 +9,12 @@
                 search
             </i>
         </button>
-        <button type="button" mat-icon-button color="primary" (click)="doSearch()">Go</button>
     </div>
 </div>
+<mat-divider></mat-divider>
 <div *ngIf="isSearch">
 <div *ngFor="let task of searchTasks">
-    <div *ngIf="!isUpdate">
+    <div *ngIf="task">
         <table id="tasktable">
             <thead>
               <tr>
@@ -48,8 +48,8 @@
                   <button *ngIf="task.status === 'complete'" mat-icon-button color="accent" [disabled]="task.status === 'complete'">
                         <mat-icon aria-label="Edit">edit</mat-icon>
                     </button>
-                  <button mat-icon-button color="accent" (click)="endTask(task.taskId, task.taskName, task.parentName,
-                    task.priority, task.startDate, task.endDate, task.parentId, task.status)">
+                  <button mat-icon-button color="accent" (click)="endTask(task.taskId, task.taskName, task.projectName,
+                  task.parentName, task.priority, task.startDate, task.endDate, task.userName)" [disabled]="task.status === 'complete'">
                     <mat-icon aria-label="End">close</mat-icon>
                   </button>
                 </td>
@@ -61,4 +61,10 @@
         </table>    
     </div>
 </div>
+</div>
+<div *ngIf="!ifResult">
+    <p align="center">No Tasks Found</p> 
+</div>
+<div *ngIf="!isSearch">
+  <p id="searchResult" align="center">Select Project</p> 
 </div>

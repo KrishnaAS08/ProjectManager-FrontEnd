@@ -15,7 +15,6 @@ import { AddProjectComponent } from './manager/project/actions/add-project/add-p
 import { ViewProjectComponent } from './manager/project/actions/view-project/view-project.component';
 import { DeleteProjectComponent } from './manager/project/actions/delete-project/delete-project.component';
 import { AddTaskComponent } from './manager/tasks/actions/add-task/add-task.component';
-import { ViewParentTaskComponent } from './manager/tasks/actions/view-parent-task/view-parent-task.component';
 import { ViewTaskComponent } from './manager/tasks/actions/view-task/view-task.component';
 import { EditTaskComponent } from './manager/tasks/actions/edit-task/edit-task.component';
 import { DeleteTaskComponent } from './manager/tasks/actions/delete-task/delete-task.component';
@@ -34,7 +33,6 @@ import { ParentDialogComponent } from './manager/dialogs/parent-dialog/parent-di
     ViewProjectComponent,
     DeleteProjectComponent,
     AddTaskComponent,
-    ViewParentTaskComponent,
     ViewTaskComponent,
     EditTaskComponent,
     DeleteTaskComponent,
@@ -56,7 +54,8 @@ import { ParentDialogComponent } from './manager/dialogs/parent-dialog/parent-di
     UserDialogComponent,
     DeleteProjectComponent,
     ProjectDialogComponent,
-    ParentDialogComponent
+    ParentDialogComponent,
+    DeleteTaskComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

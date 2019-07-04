@@ -18,7 +18,6 @@ export class AddTaskComponent implements OnInit {
 
   task: Task = new Task();
   parent: ParentTask = new ParentTask();
-  tasks: Observable<Task[]>;
   taskForm: FormGroup;
   isParent: boolean = false;
   max = 30;

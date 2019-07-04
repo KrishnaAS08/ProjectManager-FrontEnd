@@ -5,6 +5,7 @@ import { Task } from 'src/app/models/task';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ProjectDialogComponent } from 'src/app/manager/dialogs/project-dialog/project-dialog.component';
+import { DeleteTaskComponent } from '../delete-task/delete-task.component';
 
 @Component({
   selector: 'app-view-task',
@@ -15,7 +16,8 @@ export class ViewTaskComponent implements OnInit {
 
   searchTasks: Task[];
   isSearch = false;
-  isUpdate = false;
+  ifResult = true;
+  size: number;
   searchForm = new FormControl('');
   projectId: number;
   projectName: String;
@@ -34,15 +36,12 @@ export class ViewTaskComponent implements OnInit {
         if(result!=null) {
           this.projectId = result.projectId;
           this.projectName = result.projectName;
+          this.isSearch = true;
+          this.getTaskList();
         }
       }
     );
     return dialogRef.afterClosed();
-  }
-
-  doSearch (){
-    this.isSearch = true;
-    this.getTaskList();    
   }
 
   getTaskList() {
@@ -51,9 +50,30 @@ export class ViewTaskComponent implements OnInit {
       .subscribe(
         data=>{
           this.searchTasks = data;
+          this.size = data.length;
+          if(this.size===0) {
+            this.ifResult = false;
+          }
+          else {
+            this.ifResult = true;
+          }
           console.log('Search Tasks>>>',this.searchTasks);
         }
       );
   }
+
+  endTask(taskId: number, taskName: string, projectName: String, parentName: String, priority: number,
+    startDate: Date, endDate: Date, userName: String ) {
+    const dialogRef = this.dialog.open(DeleteTaskComponent, {
+      data: {taskId: taskId, taskName: taskName, projectName:projectName,
+        parentName: parentName, priority: priority, startDate: startDate,
+         endDate: endDate, userName: userName}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getTaskList();
+    });
+  }
+
 
 }
