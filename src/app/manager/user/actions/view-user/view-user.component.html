@@ -1,15 +1,15 @@
 <br />
 <div class="form">
     <mat-form-field floatLabel="auto" id="label">
-        <input matInput type="text" placeholder="Search..." autocomplete="off">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search..." autocomplete="off">
     </mat-form-field>
     Sort: &nbsp;&nbsp;&nbsp;
     <button mat-button id="btn_edit" (click)="doSortFirstName()">First Name</button>&nbsp;&nbsp;&nbsp;
-    <button mat-button id="btn_edit">Last Name</button>&nbsp;&nbsp;&nbsp;
-    <button mat-button id="btn_edit">Id</button>
+    <button mat-button id="btn_edit" (click)="doSortLastName()">Last Name</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit" (click)="doSortEmpId()">Id</button>
 </div>
 <mat-divider></mat-divider>
-<div *ngFor="let user of users">
+<div *ngFor="let user of filteredData">
     <div *ngIf="user">
         <div>
             <br />
@@ -27,7 +27,7 @@
         </div>
         <br />
         <div>
-            <button mat-button id="btn_edit">Edit</button>&nbsp;&nbsp;&nbsp;
+            <button mat-button id="btn_edit" (click)="startEdit(user)">Edit</button>&nbsp;&nbsp;&nbsp;
             <button mat-button id="btn_delete" (click)="onDelete(user.userId,user.firstName,user.lastName,user.empId)">
                 Delete</button>
         </div>

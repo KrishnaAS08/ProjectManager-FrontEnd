@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Project } from '../models/project';
@@ -10,6 +10,7 @@ import { Task } from '../models/task';
   providedIn: 'root'
 })
 export class ProjectService {
+  
 
   private baseUrl = 'http://localhost:8091/projectmanager';
 

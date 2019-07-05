@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { MatDialog, MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
-import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'view-user',
@@ -13,11 +13,13 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ViewUserComponent implements OnInit {
 
   count = 0;
-  sortedData: User[];
-  @Input() users:Observable<User[]>;
+  filteredData: User[];
+  @Input() users:User[];
+  @Output() editUser = new EventEmitter<User>();
   constructor(public dialog: MatDialog, public projectService: ProjectService) { }
 
   ngOnInit() {
+    this.getUserList();
   }
 
   getUserList() {
@@ -25,7 +27,10 @@ export class ViewUserComponent implements OnInit {
       .subscribe(
         data => {
           this.users = data;
-          console.log('UserList>>>',this.users);
+          this.filteredData = data;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       );
   }
@@ -37,32 +42,63 @@ export class ViewUserComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result=> {
       this.getUserList();
-      console.log('Result>>>',result);
     })
   }
 
   doSortFirstName() {
-    this.users.subscribe(
-      (data:User[])=>{
-        data.sort((a, b) => a.firstName.localeCompare(b.firstName));
-      }
-    )
-    
-    
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort((a, b) => a.firstName.localeCompare(b.firstName));
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort((a, b) => b.firstName.localeCompare(a.firstName));
+      this.count = 0;
+    }
   }
 
-  sortData(data: User[],name): User[] {
-    return data.sort((a, b) => {
-      const isAsc = 'asc';
-      switch (name) {
-        case 'firstName': return compare(a.firstName, b.firstName, isAsc);
-        case 'lastName': return compare(a.lastName, b.lastName, isAsc);
-        case 'empId': return compare(+a.empId, +b.empId, isAsc);
-        default: return 0;
-      }
-    });
+  doSortLastName() {
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort((a, b) => a.lastName.localeCompare(b.lastName)); 
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort((a, b) => b.lastName.localeCompare(a.lastName)); 
+      this.count = 0;
+    }
+  }
+
+  doSortEmpId() {
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort((a, b) => a.empId-b.empId); 
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort((a, b) => b.empId-a.empId); 
+      this.count = 0;
+    } 
+  }
+
+  doFilter = (value: string) => {
+    const data = this.users.filter(
+      user=> {
+        if(value && user.firstName.toLowerCase().includes(value.toLowerCase()))
+          return user;
+        if(value && user.lastName.toLowerCase().includes(value.toLowerCase()))
+          return user;
+        if(value && user.empId.toString().includes(value))
+          return user;
+      } 
+    );
+    if(value)
+      this.filteredData = data;
+    else
+      this.filteredData = this.users;
+
+
+  }
+
+  startEdit(selectedUser: User) {
+    this.editUser.emit(selectedUser);
   }
 }
-function compare(a, b, isAsc) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
+

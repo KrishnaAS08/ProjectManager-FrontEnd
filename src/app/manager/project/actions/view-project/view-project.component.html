@@ -1,19 +1,19 @@
 
 <div class="form">
     <mat-form-field floatLabel="auto" id="label">
-        <input matInput type="text" placeholder="Search..." autocomplete="off">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search..." autocomplete="off">
     </mat-form-field>
 </div>
 <div>
     Sort: &nbsp;&nbsp;&nbsp;
-    <button mat-button id="btn_edit">Start Date</button>&nbsp;&nbsp;&nbsp;
-    <button mat-button id="btn_edit">End Date</button>&nbsp;&nbsp;&nbsp;
-    <button mat-button id="btn_edit">Priority</button>&nbsp;&nbsp;&nbsp;
-    <button mat-button id="btn_edit">Completed</button>
+    <button mat-button id="btn_edit" (click)="doSortStartDate()">Start Date</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit" (click)="doSortEndDate()">End Date</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit" (click)="doSortPriority()">Priority</button>&nbsp;&nbsp;&nbsp;
+    <button mat-button id="btn_edit" (click)="doSortCompleted()">Completed</button>
 </div>
 <br />
 <mat-divider></mat-divider>
-<div *ngFor="let project of projects">
+<div *ngFor="let project of filteredData">
     <div *ngIf="project">
         <div class="flex-container">
             <div> 
@@ -34,7 +34,7 @@
                 <label id="projectFont">Priority: </label>{{project.priority}}
             </div>
             <div>
-                <button mat-button id="btn_edit">Update</button>&nbsp;&nbsp;&nbsp;
+                <button mat-button id="btn_edit" (click)="startEdit(project)">Update</button>&nbsp;&nbsp;&nbsp;
                 <button mat-button id="btn_delete" (click)="onSuspend(project.projectId, project.projectName,
                         project.userName, project.priority, project.startDate, project.endDate,
                         project.noOfTasks, project.completedTasks)">Suspend

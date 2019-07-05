@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-project',
@@ -23,8 +24,8 @@ export class DeleteProjectComponent implements OnInit {
 
   confirmSuspend(): void {
     this.projectService.suspendProject(this.project.projectId).subscribe(
-      data=>{
-        console.log('Suspended Project>>>',data);
+      (error: HttpErrorResponse) => {
+        console.log(error.error);
       }
     );
   }

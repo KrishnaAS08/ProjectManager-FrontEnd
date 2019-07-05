@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/models/task';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/services/project.service';
 import { MatDialog } from '@angular/material';
 import { UserDialogComponent } from 'src/app/manager/dialogs/user-dialog/user-dialog.component';
 import { ProjectDialogComponent } from 'src/app/manager/dialogs/project-dialog/project-dialog.component';
 import { ParentDialogComponent } from 'src/app/manager/dialogs/parent-dialog/parent-dialog.component';
 import { ParentTask } from 'src/app/models/parent-task';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-task',
@@ -46,7 +46,7 @@ export class AddTaskComponent implements OnInit {
     this.isParent = !this.isParent;
   }
 
-  getUserList(): Observable<any> {
+  getUserList() {
     const dialogRef = this.dialog.open(UserDialogComponent);
     dialogRef.afterClosed().subscribe(
       result=>{
@@ -59,7 +59,7 @@ export class AddTaskComponent implements OnInit {
     return dialogRef.afterClosed();
   }
 
-  getProjectList(): Observable<any> {
+  getProjectList() {
     const dialogRef = this.dialog.open(ProjectDialogComponent);
     dialogRef.afterClosed().subscribe(
       result=>{
@@ -72,7 +72,7 @@ export class AddTaskComponent implements OnInit {
     return dialogRef.afterClosed();
   }
 
-  getParentList(): Observable<any> {
+  getParentList() {
     const dialogRef = this.dialog.open(ParentDialogComponent);
     dialogRef.afterClosed().subscribe(
       result=>{
@@ -94,8 +94,8 @@ export class AddTaskComponent implements OnInit {
 
       this.projectService.addTask(this.task)
         .subscribe(
-          data=>{
-            console.log('Added Task>>>',data);
+          (error: HttpErrorResponse) => {
+            console.log(error.error);
           }
         );
     }
@@ -104,8 +104,8 @@ export class AddTaskComponent implements OnInit {
 
       this.projectService.addParentTask(this.parent)
         .subscribe(
-          data=>{
-            console.log('Added ParentTask>>>',data);
+          (error: HttpErrorResponse) => {
+            console.log(error.error);
           }
         );
       

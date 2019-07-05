@@ -1,7 +1,7 @@
 export class User {
     userId: number;
     firstName: string;
-    lastName: String;
-    userName: String;
+    lastName: string;
+    userName: string;
     empId: number;
 }

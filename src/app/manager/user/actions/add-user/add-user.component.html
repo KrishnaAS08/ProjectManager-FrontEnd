@@ -30,12 +30,14 @@
             </mat-form-field>
         </div>
         <br />
-        <button mat-button id="btn_save" [disabled]="!userForm.valid" (click)="onSubmit()">Add</button>&nbsp;&nbsp;&nbsp;
-        <button mat-button id="btn_reset" (click)="onReset()">Reset</button>
+        <button *ngIf="!isUpdate"mat-button id="btn_save" [disabled]="!userForm.valid" (click)="onSubmit()">Add</button>
+        <button *ngIf="isUpdate" mat-button id="btn_save" [disabled]="!userForm.valid" (click)="onUpdate()">Update</button>&nbsp;&nbsp;&nbsp;
+        <button *ngIf="!isUpdate" mat-button id="btn_reset" (click)="onReset()">Reset</button>&nbsp;&nbsp;&nbsp;
+        <button *ngIf="isUpdate" mat-button id="btn_reset" (click)="onCancel()">Cancel</button>
     </form>
 </div>
 <br />
 <mat-divider></mat-divider>
 <div class="viewContainer">
-    <view-user [users]="users"></view-user>
+    <view-user [users]="users" (editUser)="startEditUser($event)"></view-user>
 </div>

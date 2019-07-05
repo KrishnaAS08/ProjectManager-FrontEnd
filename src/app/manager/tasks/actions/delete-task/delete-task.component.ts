@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Task } from 'src/app/models/task';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-task',
@@ -23,8 +24,8 @@ export class DeleteTaskComponent implements OnInit {
 
   confirmEndTask(): void {
     this.projectService.endTask(this.task.taskId).subscribe(
-      data=>{
-        console.log('End Task>>>',data);
+      (error: HttpErrorResponse) => {
+        console.log(error.error);
       }
     );
   }

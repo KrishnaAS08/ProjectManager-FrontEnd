@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatSort } from '@angular/material';
 import { ParentTask } from 'src/app/models/parent-task';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-parent-dialog',
@@ -46,6 +47,9 @@ export class ParentDialogComponent implements OnInit {
         data=>{
           this.dataSource = new MatTableDataSource<ParentTask>(data);
           this.dataSource.sort = this.sort;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       )
   }

@@ -130,3 +130,27 @@
     border-radius: 4px;
     font-family: 'Montserrat';
 }
+
+#btn_complete {
+    background: rgb(235, 95, 95);
+    border: none;
+    color: white;
+    height: 30px  !important;
+    width: 100px !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}
+
+#btn_complete:hover {
+    background:rgb(255, 0, 0);
+    border: none;
+    color: white;
+    height: 30px  !important;
+    width: 100px !important;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+}

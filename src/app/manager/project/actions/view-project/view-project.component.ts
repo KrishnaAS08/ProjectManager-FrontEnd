@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { MatDialog } from '@angular/material';
 import { ProjectService } from 'src/app/services/project.service';
 import { DeleteProjectComponent } from '../delete-project/delete-project.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'view-project',
@@ -12,10 +12,14 @@ import { DeleteProjectComponent } from '../delete-project/delete-project.compone
 })
 export class ViewProjectComponent implements OnInit {
 
-  @Input() projects:Observable<Project[]>;
+  count = 0;
+  filteredData: Project[];
+  @Input() projects:Project[];
+  @Output() editProject = new EventEmitter<Project>();
   constructor(public dialog: MatDialog, public projectService: ProjectService) { }
 
   ngOnInit() {
+    this.getProjectList();
   }
 
   getProjectList() {
@@ -23,7 +27,10 @@ export class ViewProjectComponent implements OnInit {
       .subscribe(
         data => {
           this.projects = data;
-          console.log('UserList>>>',this.projects);
+          this.filteredData = data;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       );
   }
@@ -38,8 +45,80 @@ export class ViewProjectComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result=> {
       this.getProjectList();
-      console.log('Result>>>',result);
     })
+  }
+
+  doSortStartDate() {
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort(function(a, b) {
+        var dateA = new Date(a.startDate), dateB = new Date(b.startDate);
+        return dateA.getTime() - dateB.getTime();
+      });
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort(function(a, b) {
+        var dateA = new Date(a.startDate), dateB = new Date(b.startDate);
+        return dateB.getTime() - dateA.getTime();
+      });
+      this.count = 0;
+    }
+  }
+
+  doSortEndDate() {
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort(function(a, b) {
+        var dateA = new Date(a.endDate), dateB = new Date(b.endDate);
+        return dateA.getTime() - dateB.getTime();
+      });
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort(function(a, b) {
+        var dateA = new Date(a.endDate), dateB = new Date(b.endDate);
+        return dateB.getTime() - dateA.getTime();
+      });
+      this.count = 0;
+    }
+  }
+
+  doSortPriority() {
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort((a, b) => a.priority-b.priority); 
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort((a, b) => b.priority-a.priority); 
+      this.count = 0;
+    } 
+  }
+
+  doSortCompleted() {
+    if(this.count===0){
+      this.filteredData=this.filteredData.sort((a, b) => a.completedTasks-b.completedTasks); 
+      this.count++;
+    }    
+    else{
+      this.filteredData=this.filteredData.sort((a, b) => b.completedTasks-a.completedTasks); 
+      this.count = 0;
+    } 
+  }
+
+  doFilter = (value: string) => {
+    const data = this.projects.filter(
+      project=> {
+        if(value && project.projectName.toLowerCase().includes(value.toLowerCase()))
+          return project;
+      } 
+    );
+    if(value)
+      this.filteredData = data;
+    else
+      this.filteredData = this.projects;
+  }
+  
+  startEdit(selectedUser: Project) {
+    this.editProject.emit(selectedUser);
   }
 
 }

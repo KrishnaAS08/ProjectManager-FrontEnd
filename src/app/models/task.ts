@@ -1,14 +1,14 @@
 export class Task {
     taskId: number;
-    taskName: String;
+    taskName: string;
     startDate: Date;
     endDate: Date;
     priority: number;
-    status: String;
+    status: string;
     parentId: number;
-    parentName: String;
+    parentName: string;
     projectId: number;
-    projectName: String;
+    projectName: string;
     userId: number;
-    userName: String;
+    userName: string;
 }

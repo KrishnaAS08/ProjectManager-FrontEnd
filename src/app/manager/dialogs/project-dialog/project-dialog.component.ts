@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource, MatSort } from '@angular/material';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-project-dialog',
@@ -46,6 +47,9 @@ export class ProjectDialogComponent implements OnInit {
         data=>{
           this.dataSource = new MatTableDataSource<Project>(data);
           this.dataSource.sort = this.sort;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       )
   }

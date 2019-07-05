@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { User } from 'src/app/models/user';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-user',
@@ -23,8 +24,8 @@ export class DeleteUserComponent implements OnInit {
 
   confirmDeleteUser(): void {
     this.projectService.deleteUser(this.user.userId).subscribe(
-      data=>{
-        console.log('Deleted User>>>',data);
+      (error: HttpErrorResponse) => {
+        console.log(JSON.parse(JSON.stringify(error)));
       }
     );
   }

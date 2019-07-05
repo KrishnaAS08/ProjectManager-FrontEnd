@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatDialogRef, MAT_DIALOG_DATA, MatSort } from '@angular/material';
 import { User } from 'src/app/models/user';
 import { ProjectService } from 'src/app/services/project.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-dialog',
@@ -46,6 +47,9 @@ export class UserDialogComponent implements OnInit {
         data=>{
           this.dataSource = new MatTableDataSource<User>(data);
           this.dataSource.sort = this.sort;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       )
   }

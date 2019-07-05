@@ -1,12 +1,12 @@
 export class Project {
     projectId: number;
-    projectName: String;
+    projectName: string;
     startDate: Date;
     endDate: Date;
     priority: number;
-    status: String;
+    status: string;
     userId: number;
-    userName: String;
+    userName: string;
     completedTasks: number;
     noOfTasks: number;
 }

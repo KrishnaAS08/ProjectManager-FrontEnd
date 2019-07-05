@@ -3,11 +3,11 @@ import { Task } from 'src/app/models/task';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
 import { MatDialog } from '@angular/material';
-import { Observable } from 'rxjs';
 import { UserDialogComponent } from 'src/app/manager/dialogs/user-dialog/user-dialog.component';
 import { ParentDialogComponent } from 'src/app/manager/dialogs/parent-dialog/parent-dialog.component';
 import { ParentTask } from 'src/app/models/parent-task';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-task',
@@ -50,12 +50,15 @@ export class EditTaskComponent implements OnInit {
       .subscribe(
         data => {
           this.task = data;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       );
 
   }
 
-  getUserList(): Observable<any> {
+  getUserList() {
     const dialogRef = this.dialog.open(UserDialogComponent);
     dialogRef.afterClosed().subscribe(
       result=>{
@@ -68,7 +71,7 @@ export class EditTaskComponent implements OnInit {
     return dialogRef.afterClosed();
   }
 
-  getParentList(): Observable<any> {
+  getParentList() {
     const dialogRef = this.dialog.open(ParentDialogComponent);
     dialogRef.afterClosed().subscribe(
       result=>{
@@ -89,8 +92,8 @@ export class EditTaskComponent implements OnInit {
 
     this.projectService.updateTask(this.task.taskId,this.task)
       .subscribe(
-        data=>{
-          console.log('Updated Task>>>',data);
+        (error: HttpErrorResponse) => {
+          console.log(error.error);
         }
       );   
   }
