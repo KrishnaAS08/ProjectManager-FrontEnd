@@ -50,11 +50,22 @@ export class EditTaskComponent implements OnInit {
       .subscribe(
         data => {
           this.task = data;
+          this.taskForm.setValue({
+            'taskName': this.task.taskName,
+            'startDate':this.task.startDate,
+            'endDate': this.task.endDate,
+            'priority': this.task.priority,
+            'parentName': this.task.parentName,
+            'projectName': this.task.projectName,
+            'userName': this.task.userName
+          });
         },
         (error: HttpErrorResponse) => {
           console.log(error.error);
         }
       );
+
+
 
   }
 
