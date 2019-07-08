@@ -23,7 +23,7 @@
         <div class="form">
             <mat-form-field floatLabel="auto" hideRequiredMarker appearance="fill">
                 <mat-label id="label">Employee ID</mat-label>
-                <input formControlName="empId" matInput autocomplete="off" >
+                <input formControlName="empId" matInput autocomplete="off" maxlength="6">
                 <mat-error *ngIf="!userForm.get('empId').valid && userForm.get('empId').touched">
                     Required field
                 </mat-error>
